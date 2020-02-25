@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chain</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<h3>Hashes</h3>
+<div class="row" id="list"></div>
+</body>
+<style>
+    .item {
+        padding: 1rem 2rem;
+    }
+</style>
+<script>
+  const xmlhttp = new XMLHttpRequest();
+  const url = 'http://localhost:3000/api/v1/chain';
+
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      const myArr = JSON.parse(this.responseText);
+      console.log(myArr);
+      myFunction(myArr);
+    }
+  };
+  xmlhttp.open('GET', url, true);
+  xmlhttp.send();
+
+  function myFunction(arr) {
+    let out = '';
+    let i;
+    for (i = 0; i < arr.length; i++) {
+      out += '<div class="card col-md-12 item">' +
+        arr[i].value + '</div><br>';
+    }
+    document.getElementById('list').innerHTML = out;
+  }
+</script>
+</html>
