@@ -15,6 +15,11 @@ export class HashController {
     }, {});
   }
 
+  @get('/api/v1/chain')
+  async getHashes() {
+    return this.hashRepository.find({}, {});
+  }
+
   @post('/chain')
   async newHash(@requestBody() hash: Hash) {
     return this.hashRepository.save(new Hash(hash));
