@@ -1,4 +1,5 @@
 {
   "name": "sqlite",
-  "connector": "loopback-connector-sqlite3"
+  "connector": "loopback-connector-sqlite3",
+  "file": "sqlitedb"
 }
